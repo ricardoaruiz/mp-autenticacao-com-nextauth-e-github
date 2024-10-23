@@ -1,0 +1,12 @@
+<!-- https://fav.farm/ -->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 16 16">
+  <text x="0" y="14">
+    👤
+  </text>
+  <script 
+    xmlns="" 
+    type="text/javascript" 
+    src="chrome-extension://hejbmebodbijjdhflfknehhcgaklhano/../window/testing-library.js"
+  />
+  <script xmlns=""/>
+</svg>
