@@ -12,6 +12,11 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundImage: {
+        'home-mobile': "url('/assets/images/bg-lines-mobile.png')",
+        'home-desktop': "url('/assets/images/bg-lines.png')",
+        'dashboard-squares': "url('/assets/images/dashboard-squares.png')",
+      }
     },
   },
   plugins: [],
