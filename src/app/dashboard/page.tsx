@@ -1,12 +1,22 @@
-import { ItemButton, Avatar } from "@/components"
-import { Button } from "@/components/Button"
+import { ItemButton, Avatar, LogoutButton } from "@/components"
+import { authOptions } from "@/lib/auth"
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    return redirect('/')
+  }
+
+  const user = session.user
+
   return (
-    <section className="container flex flex-col flex-nowrap mx-auto min-h-screen bg-right-bottom bg-no-repeat pt-10 md:pt-24 bg-dashboard-squares bg-[length:467px_463px] md:bg-[url()]" >
+    <section className="container flex flex-col flex-nowrap mx-auto min-h-screen bg-right-bottom bg-no-repeat pt-10 md:pt-24 bg-dashboard-squares bg-[length:467px_463px] md:bg-[url('')]" >
       <header className="flex flex-col items-center">
-        <Avatar />
-        <h1 className="text-4xl mt-6 md:mt-0 md:text-8xl/tight text-center w-[303px] md:w-full">Boas vindas, <span className="font-bold">Fulano de Tal</span></h1>
+        <Avatar imgUrl={user?.image ?? ''}/>
+        <h1 className="text-4xl mt-6 md:mt-0 md:text-8xl/tight text-center w-[303px] md:w-full">Boas vindas, <span className="font-bold">{user?.name}</span></h1>
         <h3 className="text-lg mt-3 md:mt-0 md:text-3xl/tight font-thin text-slate-500">Que tal analisarmos seu GitHub?</h3>
       </header>
 
@@ -23,9 +33,7 @@ export default function DashboardPage() {
           </li>
         </ul>
 
-        <Button className="mt-16">
-          Logout
-        </Button>
+        <LogoutButton />
       </section>
     </section>
   )
